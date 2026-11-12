@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Left Behind: Moon & Mars Relics</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&family=Fraunces:wght@400;600;800&family=JetBrains+Mono:wght@400;600&family=Nunito+Sans:wght@400;700&display=swap" rel="stylesheet">
+  <!-- Style -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Top bar with title, progress -->
+  <header id="top">
+    <strong>Left Behind</strong>
+    <select id="toc" aria-label="Jump to chapter"></select>
+    <span id="page-indicator"></span>
+  </header>
+  <div id="progress-bar"><span id="progress"></span></div>
+
+  <!-- Main content pages (sections will be wrapped by script) -->
+  <main id="pages">
+    <!-- Chapter 0: Intro -->
+    <section id="intro" class="page slide-hero">
+      <div class="chapter-label">(00) A true story · est. 1967</div>
+      <h1>Left Behind. Never forgotten.</h1>
+      <p class="lead">Six machines that stayed on the Moon and Mars, and the work they still do.</p>
+      <p><button class="btn" onclick="go(1)">Begin the journey</button></p>
+    </section>
+
+    <!-- Chapter 1: Surveyor 3 -->
+    <section id="c1" class="page">
+      <div class="chapter-label">Apr 1967 · Chapter 1</div>
+      <h2>The brave robot that went first</h2>
+      <div class="dialog say"><i class="avatar">C</i>
+        <span>Robots like me always go first. Brave, right?</span>
+      </div>
+      <p>Before any astronaut stepped on the Moon, NASA sent Surveyor 3 to check if the ground was safe. It landed in Oceanus Procellarum and dug trenches—confirming the lunar soil was firm enough for Apollo.</p>
+      <p>Surveyor 3 had no rocket engine to fly home, so it stayed behind. Two years later (Nov 1969) Apollo 12’s Pete Conrad & Alan Bean walked to it, cut off its TV camera and scoop arm, and brought those parts back to Earth to study how space affects materials.</p>
+      <div class="fact why">Why it stayed: No lift-off engine – a return trip would need too much fuel.</div>
+      <div class="fact how">How it helps: The returned parts taught engineers about metal aging on the Moon. (Surveyor 3’s camera is now in a museum.)</div>
+      <button class="wow" data-text="Apollo 12 landed only ~180 m from Surveyor 3, so the astronauts could simply walk there!">Tap for a wow fact</button>
+    </section>
+
+    <!-- Chapter 2: Laser Reflectors -->
+    <section id="c2" class="page">
+      <div class="chapter-label">July 1969 · Chapter 2</div>
+      <h2>The mirror that was left to answer</h2>
+      <div class="dialog say"><i class="avatar">C</i>
+        <span>It sends light straight back, like a space boomerang!</span>
+      </div>
+      <p>At Tranquility Base, Armstrong & Aldrin left behind a panel of corner-cube mirrors (they then lifted off, leaving the rest of Eagle). Apollo 14 and 15 added more panels. These retroreflectors require <em>no power</em> – they just sit still on the Moon.</p>
+      <p>Scientists on Earth fire lasers at these panels and time the beam’s round-trip. This laser ranging experiment has run for decades. NASA reports it shows the Moon receding from Earth at about 3.8 cm per year.</p>
+      <div class="fact why">Why it stayed: A mirror only works if it stays on the Moon.</div>
+      <div class="fact how">How it helps: Lasers still bounce off these panels, enabling precise measurements of lunar distance.</div>
+      <button class="wow" data-text="The Moon is moving away about as fast as a fingernail grows each year!">Tap for a wow fact</button>
+    </section>
+
+    <!-- Image example: Apollo 12 site -->
+    <section class="full-image">
+       *Figure: NASA’s LRO imaged Apollo 12’s landing site, showing the LM Intrepid (center), ALSEP (right), and Surveyor 3 (lower left).*
+    </section>
+
+    <!-- Chapter 3: Apollo 15 Rover -->
+    <section id="c3" class="page">
+      <div class="chapter-label">July 1971 · Chapter 3</div>
+      <h2>The car that stayed on the Moon</h2>
+      <div class="dialog say"><i class="avatar">C</i>
+        <span>Vroom! The first Moon car had no roof and no doors.</span>
+      </div>
+      <p>Apollo 15 carried the first Lunar Roving Vehicle (LRV), a battery-powered “moon buggy” for driving farther than walking range. Commander David Scott and Jim Irwin drove it around Hadley Rille, traversing hills and rocks up to ~28 km (17.3 mi) total.</p>
+      <p>When their mission was done, each kilogram mattered for the ride home. The astronauts parked the empty buggy on the plain, because the lander needed the weight capacity for ~77 kg of moon rocks instead. (They did record how it performed: today its design still guides modern rover missions.)</p>
+      <div class="fact why">Why it stayed: Moon rocks (77 kg) mattered more – no spare fuel or space to fly the car back.</div>
+      <div class="fact how">How it helps: It proved vehicles work on the Moon. Engineers still study its design when planning new Moon rovers.</div>
+      <button class="wow" data-text="The Apollo 15 rover folded up like a suitcase to fit in the lander!">Tap for a wow fact</button>
+      <!-- Optional 3D model panel or image fallback -->
+      <div class="model-viewer">
+        <h3>3D Model</h3>
+        <canvas id="modelCanvas" width="400" height="250"></canvas>
+        <p class="hint">Drag to rotate the model; tap parts for info. (WebGL required.)</p>
+      </div>
+    </section>
+
+    <!-- Chapter 4: Ingenuity on Mars -->
+    <section id="c4" class="page">
+      <div class="chapter-label">Feb 2021 – Jan 2024 · Chapter 4</div>
+      <h2>The helicopter that flew on Mars</h2>
+      <div class="dialog say"><i class="avatar">C</i>
+        <span>A helicopter on Mars? Zoom zoom!</span>
+      </div>
+      <p>In Feb 2021, NASA’s Perseverance rover landed at Jezero Crater on Mars, carrying *Ingenuity*, a small solar-powered helicopter. Ingenuity’s first flight (19 Apr 2021) made history as “the first aircraft to make a powered, controlled flight on another planet”.</p>
+      <p>Mars’ atmosphere is extremely thin (about 1% of Earth’s pressure), so to fly its two 1.2 m rotors had to spin very fast against very little air. Originally planned for just 5 flights, Ingenuity far outperformed expectations – it completed 72 flights over nearly three years. On Jan 18 2024, its final flight ended with a hard landing that broke a rotor blade. Now broken, Ingenuity is parked on Mars for the foreseeable future.</p>
+      <div class="fact why">Why it stayed: It’s a test craft with a broken rotor blade, left on Mars (no humans or rockets there yet).</div>
+      <div class="fact how">How it helps: Its success proved we can fly on Mars. Data from its flights is guiding new Mars aircraft designs.</div>
+      <button class="wow" data-text="Ingenuity’s rotors had to spin ~2400 times per minute to lift in the thin Martian air!">Tap for a wow fact</button>
+      <figure>
+         *Figure: NASA/JPL illustration of the Ingenuity helicopter on Mars (artist’s concept).* 
+      </figure>
+    </section>
+
+    <!-- Chapter 5: Sample Tubes -->
+    <section id="c5" class="page">
+      <div class="chapter-label">2022–2023 · Chapter 5</div>
+      <h2>The tubes that wait for a ride</h2>
+      <div class="dialog say"><i class="avatar">C</i>
+        <span>Ten tubes, all tucked in and waiting.</span>
+      </div>
+      <p>Perseverance not only drives and flies cameras – it also drills rock cores. It has filled dozens of metal sample tubes with Mars rock and dirt. In Jan 2023 the rover deposited ten sealed tube samples at a site called “Three Forks” as a backup stash on the Martian ground. The plan was for a future mission (NASA/ESA Mars Sample Return) to pick them up and bring them to Earth.</p>
+      <p>However, recent budget reviews have effectively canceled (or indefinitely delayed) the Mars Sample Return mission. For now, those sample tubes remain on Mars. Perseverance continues to study their contents with onboard instruments, and engineers hope one day another mission will retrieve them.</p>
+      <div class="fact why">Why they stayed: No funded mission to bring them back – return rockets are extremely costly (NASA paused MSR in 2024).</div>
+      <div class="fact how">How it helps: The tubes are sealed so samples stay safe. Perseverance’s own lab tools are analyzing them now. We’ll be ready if a future mission ever rescues these “astronaut-delayed” samples.</div>
+      <button class="wow" data-text="Perseverance’s drill is like a super-tough apple corer – it punches out a 1 cm-wide rock core into each tube!">Tap for a wow fact</button>
+    </section>
+
+    <!-- Chapter 6: Radar Map -->
+    <section id="radar" class="page">
+      <div class="chapter-label">Chapter 6</div>
+      <h2>Find them with radar</h2>
+      <p>Sweep the radar and tap each blip to scan it.</p>
+      <div class="panel map-panel">
+        <div class="map-toggle"><button id="tMoon">Moon</button><button id="tMars" class="alt">Mars</button>
+          <span id="found-count">0/3 found</span>
+        </div>
+        <canvas id="radarMap" width="640" height="400"></canvas>
+        <div id="info"><h3>Tap a blip</h3><p>Each one is a relic. Find them all!</p></div>
+      </div>
+    </section>
+
+    <!-- Chapter 7: Games -->
+    <section id="play" class="page">
+      <div class="chapter-label">Chapter 7</div>
+      <h2>Play time!</h2>
+      <p>Three games to test what you learned.</p>
+
+      <!-- Soft Landing game -->
+      <div class="panel game-panel">
+        <h3>1. Soft Landing</h3>
+        <p>Hold “Thrust” to slow your lander. Touch down gently on the green pad.</p>
+        <canvas id="gameLander" width="320" height="400"></canvas>
+        <div class="game-controls">
+          <button id="btnLeft" class="alt">◀</button>
+          <button id="btnUp">▲ Thrust</button>
+          <button id="btnRight" class="alt">▶</button>
+          <button id="btnNew">New landing</button>
+        </div>
+        <div id="landerMsg" class="game-msg"></div>
+      </div>
+
+      <!-- Laser Aim game -->
+      <div class="panel game-panel">
+        <h3>2. Laser Aim</h3>
+        <p>Tap “Fire” when the moving beam lines up with the mirror. Hit it five times.</p>
+        <canvas id="gameLaser" width="480" height="180"></canvas>
+        <div class="game-controls">
+          <button id="btnFire">Fire</button>
+          <span id="laserMsg" class="game-msg"></span>
+        </div>
+      </div>
+
+      <!-- Quiz and Timeline games -->
+      <div class="panel game-panel">
+        <h3>3. Story Quiz</h3>
+        <div id="quizContainer"></div>
+      </div>
+      <div class="panel game-panel">
+        <h3>4. Timeline</h3>
+        <p>Tap the events from earliest to latest:</p>
+        <div id="timelineButtons" class="row"></div>
+        <div id="timelineMsg" class="game-msg"></div>
+      </div>
+    </section>
+
+    <!-- Ledger and Stats -->
+    <section id="ledger" class="page">
+      <div class="chapter-label">(07) The ledger</div>
+      <h2>What stayed. What it still does.</h2>
+      <table class="ledger-table">
+        <tr><th>Relic</th><th>Why it stayed</th><th>Still working</th></tr>
+        <tr><td>Surveyor 3</td><td>No engine to lift off</td><td>Parts taught us how metal ages in space (camera in museum)</td></tr>
+        <tr><td>Apollo 11 Mirror</td><td>Only works on the Moon</td><td>Lasers still measure Moon’s distance</td></tr>
+        <tr><td>Apollo 15 Buggy</td><td>Moon rocks mattered more</td><td>Proved Moon vehicles work, guides new rover designs</td></tr>
+        <tr><td>Ingenuity</td><td>Broken rotor blade</td><td>Proved flight on Mars; data for future aircraft</td></tr>
+        <tr><td>Sample tubes</td><td>No ride home funded</td><td>Carefully sealed waiting for next explorers</td></tr>
+      </table>
+    </section>
+
+    <section id="stats" class="page">
+      <div class="chapter-label">(08) By the numbers</div>
+      <h2>Small numbers. Long stories.</h2>
+      <ol class="stats-list">
+        <li><b>31</b> months Surveyor 3 waited alone on the Moon (Apr ’67 – Nov ’69).</li>
+        <li><b>3.8 cm</b> per year the Moon drifts away from Earth.</li>
+        <li><b>17.3 mi</b> driven in the Apollo 15 Moon buggy.</li>
+        <li><b>72</b> successful flights Ingenuity made on Mars.</li>
+        <li><b>~2400</b> blade spins per minute for Ingenuity’s thin-atmosphere flight.</li>
+        <li><b>10</b> sample tubes waiting at the Mars depot (Three Forks).</li>
+      </ol>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="page">
+      <div class="chapter-label">(09) Good to know.</div>
+      <h2>Good to know.</h2>
+      <details><summary>Why not bring them home?</summary>
+        <p>Every kilogram launched needs fuel and rockets. Return trips were designed for astronauts and rocks, not for old machines.</p>
+      </details>
+      <details><summary>Is anything still talking to Earth?</summary>
+        <p>Only Perseverance (on Mars) still sends data. Surveyor 3, the buggy and Ingenuity are silent relics. The Apollo mirrors require no power – lasers ping them.</p>
+      </details>
+      <details><summary>Will the Mars tubes come home?</summary>
+        <p>Not yet. The 2026 budget cut means no funded Mars Sample Return. Plans may change, so stay tuned to NASA news.</p>
+      </details>
+      <details><summary>Can we still see them?</summary>
+        <p>Yes! NASA’s Lunar Reconnaissance Orbiter has photographed Apollo landing sites from orbit. (No orbiters around Mars can image Perseverance closely.)</p>
+      </details>
+    </section>
+
+    <!-- Ending -->
+    <section id="end" class="page">
+      <div class="chapter-label">The ending</div>
+      <h2>Still there. Still teaching.</h2>
+      <p>A robot on a crater rim, a mirror panel on a lunar plain, a car parked in a valley, a helicopter with a bent blade on Mars, and ten sealed tubes on the red ground. None could come home, and none are finished.</p>
+      <p>Laser beams still bounce off the Moon’s mirrors. Engineers still learn from the rover and the helicopter. The tubes wait for the next explorers. These machines helped take our first steps on other worlds – and they keep inspiring us to go further.</p>
+      <p>Next time you see the Moon, remember: some of our things are still up there, keeping watch.</p>
+      <div class="explorer-badge">
+        <h3>Your Explorer Badge</h3>
+        <p id="rank">Collect stars by finding blips, playing games and tapping the wow buttons.</p>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <p>Facts from NASA, Apollo Lunar Journal, LROC, etc. Design by (Your Name). NASA does not endorse this page.</p>
+    </footer>
+  </main>
+
+  <!-- Navigation Buttons -->
+  <nav id="controls">
+    <button id="btnBack" onclick="go(pageIndex-1)">Back</button>
+    <button id="btnNext" onclick="go(pageIndex+1)">Next</button>
+  </nav>
+
+  <!-- Include Three.js for 3D and our script -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
